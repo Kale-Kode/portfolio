@@ -2,8 +2,11 @@ import React from 'react'
 import { useState, useRef } from 'react'
 import Button from './Button'
 import { TiLocationArrow } from 'react-icons/ti'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 const Hero = () => {
+  // STATES
   const [currentIndex, setCurrentIndex] = useState(1)
   const [hasClicked, setHasClicked] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -12,15 +15,47 @@ const Hero = () => {
   const totalVideos = 4
   const nextVideoRef = useRef(null)
 
+  // on mini video click: set clicked to true, and increment current video index (resets at totalVideos)
   const handleMiniVideoClick = () => {
     setHasClicked(true)
     setCurrentIndex(prevIndex => prevIndex % totalVideos + 1)
   }
 
+  // increment loaded videos on load
   const handleVideoLoad = () => {
     setLoadedVideos(prev => prev + 1)
   }
 
+  // the useGSAP hook triggers based on the dependencies value in the second argument
+  // in this case animate mini video player when currentIndex changes i.e. on click
+  useGSAP(() => {
+    if (hasClicked) {
+      // make next video visible
+      gsap.set('#next-video', {
+        visibility: 'visible'
+      })
+      // make next video grow to fill the screen
+      gsap.to('#next-video', {
+        transformOrigin: 'center center',
+        scale: 1,
+        width: '100%',
+        height: '100%',
+        duration: 1,
+        ease: 'power1.inOut',
+        // make the next video begin playing right away, even while animating
+        onStart: () => nextVideoRef.current.play(),
+      })
+      // make the mini video frame animate to grow in
+      gsap.from('#current-video', {
+        transformOrigin: 'center center',
+        scale: 0,
+        duration: 1.5,
+        ease: 'power1.inOut',
+      })
+    }
+  }, {dependencies: [currentIndex], revertOnUpdate: true})
+
+  // retrieve a hero video from a given index
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`
 
   return (
@@ -58,7 +93,7 @@ const Hero = () => {
             autoPlay
             loop
             muted
-            className='absolute top-0 left-0 size-full object-cover object-center'
+            className='absolute top-0 left-0 size-full object-cover object-center border border-transparent'
             onLoadedData={handleVideoLoad}
             />
 
@@ -74,6 +109,9 @@ const Hero = () => {
           </div>
 
         </div>
+
+        <h1 className='special-font hero-heading absolute bottom-5 right-5 text-black'>IDE<b>A</b>S</h1>
+
     </div>
   )
 }
