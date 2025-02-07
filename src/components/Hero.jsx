@@ -143,7 +143,7 @@ const Hero = () => {
           </div>
 
         </div>
-
+        
         <h1 className='special-font hero-heading absolute bottom-10 right-10 text-black'>LI<b>U</b></h1>
 
     </div>
