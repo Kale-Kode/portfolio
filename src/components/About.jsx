@@ -31,18 +31,14 @@ const About = () => {
 
   return (
     <div id='about' className='w-screen min-h-screen'>
-
       <div className='relative mb-8 mt-36 flex flex-col items-center gap-5'>
-        <h2 className='font-general text-sm uppercase md:text-10px'>Welcome to creativity</h2>
-        
+        <h2 className='font-general text-sm uppercase md:text-10px'>Creating For Impact</h2>
         <AnimatedTitle text='Cre<b>a</b>ting web experiences<br>that deliver v<b>a</b>lue to the world.' containerClass='mt-5 !text-black text-center'/>
-      
         <div className='about-subtext'> 
           <p>As the web grows, its applications must grow too.</p>
           <p>I strive to create immersive, interactive, and impactful tools that create value in people's lives.</p>
         </div>
       </div>
-
       <div className='h-dvh w-screen' id='clip'>
         <div className='mask-clip-path about-image'>
           <img src='img/about.jpg'
@@ -51,7 +47,6 @@ const About = () => {
           />
         </div>
       </div>
-      
     </div>
   )
 }

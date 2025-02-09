@@ -137,7 +137,7 @@ const Hero = () => {
           <div className='absolute top-0 left-0 z-40 size-full'>
             <div className='mt-24 px-5 sm:px-10'>
               <h1 className='special-font hero-heading text-blue-75'>K<b>A</b>ILE</h1>
-              <p className='mb-5 max-w-64 font-robert-regular text-blue-100'>Front end developer and designer.<br />Pushing the limits of the web.</p>
+              <p className='mb-5 max-w-64 font-robert-regular text-blue-100'>Front end developer and AI enthusiast.<br />Creating applications for the future.</p>
               <Button id="explore-projects" text="Explore Projects" leftIcon={<TiLocationArrow />} containerClass="!bg-yellow-300 flex-center gap-1" />
             </div>
           </div>
