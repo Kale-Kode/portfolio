@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useRef } from 'react'
 import Button from './Button'
 import { TiLocationArrow } from 'react-icons/ti'
+import Tilt from 'react-parallax-tilt'; 
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
@@ -98,7 +99,7 @@ const Hero = () => {
 
           <div>
 
-            <div className='mask-clip-path absolute-center absolute z-50 cursor-pointer overflow-hidden rounded-lg'>
+            <Tilt scale='1' tiltMaxAngleX='16' tiltMaxAngleY='16' tiltReverse glareEnable className='mask-clip-path absolute-center absolute z-50 cursor-pointer overflow-hidden rounded-lg'>
               <div onClick={handleMiniVideoClick} className={`origin-center scale-50 opacity-0 transition-all duration-500 ease-in-out hover:scale-100 hover:opacity-100 ${videoAnimating ? 'pointer-events-none' : 'pointer-events-auto'}`}>
                 <img 
                 ref={nextVideoRef} 
@@ -110,7 +111,7 @@ const Hero = () => {
                 onLoadedData={handleVideoLoad}
                 />
               </div>
-            </div>
+            </Tilt>
 
             <img 
             ref={nextVideoRef}
