@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState, useRef } from 'react'
 import Button from './Button'
 import { TiLocationArrow } from 'react-icons/ti'
@@ -69,6 +69,13 @@ const Hero = () => {
   }, {dependencies: [currentIndex], revertOnUpdate: true})
 
 
+  // check for video loaded and stop loading anim
+  useEffect(() => {
+    if (loadedVideos === totalVideos-1) {
+      setIsLoading(false)
+    }
+  }, [loadedVideos])
+
   // scroll animation for hero video frame
   useGSAP(() => {
     // apply trapzoid clip path to the video frame
@@ -91,17 +98,28 @@ const Hero = () => {
   })
 
   // retrieve a hero video from a given index
-  const getVideoSrc = (index) => `videos/hero-${index}.gif`
+  const getVideoSrc = (index) => `videos/hero${index}.mp4`
 
   return (
     <div className='relative h-dvh w-screen overflow-x-hidden'>
+
+        {isLoading && (
+          <div className='flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50'>
+            <div className='three-body'>
+              <div className='three-body__dot'></div>
+              <div className='three-body__dot'></div>
+              <div className='three-body__dot'></div>
+            </div>
+          </div>
+        )}
+
         <div id='video-frame' className='relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75'>
 
           <div>
 
-            <Tilt scale='1' tiltMaxAngleX='16' tiltMaxAngleY='16' tiltReverse glareEnable className='mask-clip-path absolute-center absolute z-50 cursor-pointer overflow-hidden rounded-lg'>
+            <Tilt scale='1' tiltMaxAngleX='16' tiltMaxAngleY='16' tiltReverse className='mask-clip-path absolute-center absolute z-50 cursor-pointer overflow-hidden rounded-lg'>
               <div onClick={handleMiniVideoClick} className={`origin-center scale-50 opacity-0 transition-all duration-500 ease-in-out hover:scale-100 hover:opacity-100 ${videoAnimating ? 'pointer-events-none' : 'pointer-events-auto'}`}>
-                <img 
+                <video 
                 ref={nextVideoRef} 
                 src={getVideoSrc(currentIndex%totalVideos+1)}
                 loop
@@ -113,7 +131,7 @@ const Hero = () => {
               </div>
             </Tilt>
 
-            <img 
+            <video 
             ref={nextVideoRef}
             src={getVideoSrc(currentIndex)}
             loop
@@ -123,7 +141,7 @@ const Hero = () => {
             onLoadedData={handleVideoLoad}
             />
 
-            <img 
+            <video 
             src={getVideoSrc(prevIndex)}
             autoPlay
             loop
@@ -138,7 +156,7 @@ const Hero = () => {
           <div className='absolute top-0 left-0 z-40 size-full'>
             <div className='mt-24 px-5 sm:px-10'>
               <h1 className='special-font hero-heading text-blue-75'>K<b>A</b>ILE</h1>
-              <p className='mb-5 max-w-64 font-robert-regular text-blue-100'>Front end developer and AI enthusiast.<br />Creating applications for the future.</p>
+              <p className='mb-5 max-w-80 font-robert-regular text-blue-100'>Front end developer and AI enthusiast.<br />Creating applications for the future.</p>
               <Button id="explore-projects" text="Explore Projects" leftIcon={<TiLocationArrow />} containerClass="!bg-yellow-300 flex-center gap-1" />
             </div>
           </div>

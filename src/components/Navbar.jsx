@@ -62,7 +62,7 @@ const Navbar = () => {
   }, [navVisible])
 
   return (
-    <div ref={navContainerRef} className='fixed inset-x-10 top-4 z-50 h-16 border-none transition-all duration-700 m:inset-x-4'>
+    <div ref={navContainerRef} className='fixed inset-x-2 top-4 z-50 h-16 border-none transition-all duration-700'>
         <header className='absolute top-1/2 w-full -translate-y-1/2'>
             <nav className='flex size-full items-center justify-between px-6'>
                 <div className='flex items-center gap-7'>
