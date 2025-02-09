@@ -3,7 +3,7 @@ import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
 import Navbar from './components/Navbar.jsx'
 import Projects from './components/Projects.jsx'
-import Story from './components/Story.jsx'
+import TechStack from './components/TechStack.jsx'
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
       <Hero />
       <About />
       <Projects />
-      <Story />
+      <TechStack />
     </main>
   )
 }

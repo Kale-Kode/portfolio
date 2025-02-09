@@ -4,7 +4,7 @@ import { BsBraces } from "react-icons/bs";
 import { useWindowScroll } from 'react-use'; 
 import { gsap } from 'gsap';
 
-const navItems = ['About', 'Projects', 'Passions', 'Contact']
+const navItems = ['About', 'Projects', 'Tech Stack', 'Contact']
 
 const Navbar = () => {
   const navContainerRef = useRef(null)
@@ -78,7 +78,7 @@ const Navbar = () => {
                 <div className='flex h-full items-center'>
                     <div className='hidden md:block'>
                         {navItems.map((item) => (
-                            <a key={item} href={`#${item.toLowerCase()}`} className='nav-hover-btn'>
+                            <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className='nav-hover-btn'>
                                 {item}
                             </a>
                         ))}
