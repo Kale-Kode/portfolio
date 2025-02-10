@@ -61,6 +61,12 @@ const Navbar = () => {
     })
   }, [navVisible])
 
+  // button hover sfx
+  const playHoverSound = () => {
+    let hover = new Audio("/audio/button-hover.wav")
+    hover.play()
+  }
+
   return (
     <div ref={navContainerRef} className='fixed inset-x-2 top-4 z-50 h-16 border-none transition-all duration-700'>
         <header className='absolute top-1/2 w-full -translate-y-1/2'>
@@ -71,21 +77,22 @@ const Navbar = () => {
                     id='projects' 
                     text='projects' 
                     rightIcon={<BsBraces />} 
-                    containerClass='bg-blue-50 md:flex hidden items-center justify-center gap-1'
+                    containerClass='bg-yellow-300 md:flex hidden items-center justify-center gap-1'
+                    buttonType={1}
                     />
                 </div>
 
                 <div className='flex h-full items-center'>
                     <div className='hidden md:block'>
                         {navItems.map((item) => (
-                            <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className='nav-hover-btn'>
+                            <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className='nav-hover-btn !text-blue-50' onMouseEnter={playHoverSound}>
                                 {item}
                             </a>
                         ))}
                     </div>
 
                     <button className='ml-10 flex items-center space-x-0.5' onClick={toggleAudio}>
-                        <audio ref={audioRef} className='hidden' src='/audio/loop.mp3' loop />
+                        <audio ref={audioRef} className='hidden' src='/audio/ambient.wav' loop />
                         {[1,2,3,4].map(n => (
                             <div key={n} className={`indicator-line ${indicatorActive ? 'active' : ''}`} style={{
                                 animationDelay: `${n*0.1}s`,

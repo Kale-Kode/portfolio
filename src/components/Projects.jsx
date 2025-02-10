@@ -27,13 +27,13 @@ const Projects = () => {
                 <BentoCard src='videos/feature-4.mp4' text='Shadow Hand' subtext="As part of the RL team in UoE's HumanEd society, we are training the Shadow Dextrous Hand to flip a cube in simulation." isComingSoon/>
               </Tilt>
               <Tilt scale='0.95' tiltMaxAngleX='4' tiltMaxAngleY='4' tiltReverse className='bento-tilt_2'>
+              <BentoCard src='videos/feature-5.mp4' text='CodePad' subtext="An AI powered learning tool designed specifically for CompSci students." isComingSoon/>
+              </Tilt>
+              <Tilt scale='0.95' tiltMaxAngleX='4' tiltMaxAngleY='4' tiltReverse className='bento-tilt_2'>
                 <div className='flex size-full flex-col justify-between bg-violet-300 p-5'>
                   <h1 className='bento-title special-font max-w-80 text-black'>More Exciting Projects Coming Soon</h1>
                   <TiLocationArrow className='m-5 scale-[5] self-end'/>
                 </div>
-              </Tilt>
-              <Tilt scale='0.95' tiltMaxAngleX='4' tiltMaxAngleY='4' tiltReverse className='bento-tilt_2'>
-                <video src='/videos/feature-5.mp4' loop muted autoPlay className='size-full object-hover object-center'/>
               </Tilt>
             </div>
 

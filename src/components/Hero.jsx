@@ -25,6 +25,7 @@ const Hero = () => {
   const handleMiniVideoClick = () => {
     setHasClicked(true)
     setCurrentIndex(prevIndex => prevIndex % totalVideos + 1)
+    playHoverSound()
   }
 
   // increment loaded videos on load
@@ -100,6 +101,13 @@ const Hero = () => {
   // retrieve a hero video from a given index
   const getVideoSrc = (index) => `videos/hero${index}.mp4`
 
+  // portal sfx
+  const playHoverSound = () => {
+    let hover = new Audio("/audio/portal-sound.wav")
+    hover.volume = 0.1
+    hover.play()
+  }
+
   return (
     <div className='relative h-dvh w-screen overflow-x-hidden'>
 
@@ -157,7 +165,7 @@ const Hero = () => {
             <div className='mt-24 px-5 sm:px-10'>
               <h1 className='special-font hero-heading text-blue-75'>K<b>A</b>ILE</h1>
               <p className='mb-5 max-w-80 font-robert-regular text-blue-100'>Front end developer and AI enthusiast.<br />Creating applications for the future.</p>
-              <Button id="explore-projects" text="Explore Projects" leftIcon={<TiLocationArrow />} containerClass="!bg-yellow-300 flex-center gap-1" />
+              <Button id="explore-projects" text="Explore Projects" leftIcon={<TiLocationArrow />} containerClass="!bg-blue-50 flex-center gap-1" buttonType={2}/>
             </div>
           </div>
 
